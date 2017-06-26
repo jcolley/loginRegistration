@@ -18,7 +18,7 @@ def register(request):
     else:
         messages.success(request, 'User created, please login.')
 
-    return redirect('/')
+    return redirect('auth:index')
 
 
 def login(request):
@@ -28,8 +28,13 @@ def login(request):
             messages.error(request, error)
     else:
         request.session['id'] = results['user'].id
-        return redirect('/success')
+        return redirect('auth:success')
     return redirect('/')
+
+
+def logout(request):
+    request.session.clear()
+    return rediect('auth:index')
 
 
 def success(request):

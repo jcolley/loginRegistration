@@ -11,7 +11,7 @@
             {% endfor %}
         {% endif %}
         <h1>Register Here</h1>
-        <form action="/register" method="POST">
+        <form action="{% url 'auth:register' %}" method="POST">
         {% csrf_token %}
             <input type="text" name="first_name" value="" placeholder="Enter your first name.">
             <input type="text" name="last_name" value="" placeholder="Enter your last name.">
@@ -21,7 +21,7 @@
             <button type="submit" name="submit" value="register">Register</button>
         </form>
         <h1>Login Here</h1>
-        <form action="/login" method="POST">
+        <form action="{% url 'auth:login' %}" method="POST">
         {% csrf_token %}
             <input type="text" name="email" value="" placeholder="Enter your email address.">
             <input type="password" name="password" value="" placeholder="Enter your password.">
